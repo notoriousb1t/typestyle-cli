@@ -1,0 +1,7 @@
+.alm
+.vscode
+node_modules
+src/**/*.js
+src/**/*.map
+tests/**/*.js
+npm-debug.log
