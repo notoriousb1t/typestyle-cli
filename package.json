@@ -11,6 +11,7 @@
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.45",
     "mocha": "^3.1.2",
+    "tslint": "^4.0.2",
     "typescript": "^2.0.10"
   },
   "description": "Command-line tool for building TypeScript into CSS files",
