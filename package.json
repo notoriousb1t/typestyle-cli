@@ -7,15 +7,14 @@
     "url": "https://github.com/notoriousb1t/typestyle-cli/issues"
   },
   "dependencies": {
+    "@types/node": "^6.0.51",
     "ts-node": "^1.7.0",
-    "typestyle": ">=0.9.1"
+    "typestyle": "^2.0.10"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.32",
-    "@types/node": "^6.0.45",
     "mocha": "^3.1.2",
-    "tslint": "^4.0.2",
-    "typescript": "^2.0.10"
+    "tslint": "^4.0.2"
   },
   "description": "Command-line tool for building TypeScript into CSS files",
   "keywords": [
@@ -32,6 +31,7 @@
   "license": "MIT",
   "main": "./lib/index.js",
   "name": "typestyle-cli",
+  "preferGlobal": true,
   "preversion": "npm test",
   "postversion": "git push --follow-tags && npm publish",
   "repository": {
