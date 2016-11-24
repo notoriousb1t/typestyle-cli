@@ -1,5 +1,8 @@
 {
   "author": "Christopher Wallis <christopher.j.wallis@gmail.com> (http://notoriousb1t.com)",
+  "bin": {
+      "typestyle": "./bin/typestyle.js"
+  },
   "bugs": {
     "url": "https://github.com/notoriousb1t/typestyle-cli/issues"
   },
@@ -27,7 +30,7 @@
   ],
   "homepage": "https://github.com/notoriousb1t/typestyle-cli#readme",
   "license": "MIT",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "name": "typestyle-cli",
   "repository": {
     "type": "git",
