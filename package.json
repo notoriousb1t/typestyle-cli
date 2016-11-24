@@ -32,6 +32,8 @@
   "license": "MIT",
   "main": "./lib/index.js",
   "name": "typestyle-cli",
+  "preversion": "npm test",
+  "postversion": "git push --follow-tags && npm publish",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/notoriousb1t/typestyle-cli.git"
@@ -39,5 +41,5 @@
   "scripts": {
     "test": "node_modules/.bin/mocha --require ts-node/register --reporter spec ./tests/**/**.ts"
   },
-  "version": "0.0.2"
+  "version": "0.0.1"
 }
