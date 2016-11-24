@@ -9,8 +9,15 @@
   "dependencies": {
     "@types/node": "^6.0.51",
     "ts-node": "^1.7.0",
-    "typestyle": "^2.0.10"
+    "typescript": "^2.0.10",
+    "typestyle": "^0.9.1"
   },
+  "bundledDependencies": [
+    "@types/node",
+    "ts-node",
+    "typescript",
+    "typestyle"
+  ],
   "devDependencies": {
     "@types/mocha": "^2.2.32",
     "mocha": "^3.1.2",
