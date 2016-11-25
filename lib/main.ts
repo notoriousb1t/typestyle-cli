@@ -1,3 +1,3 @@
-import { blue } from 'typestyle/lib/csx';
+var csx = require('typestyle/lib/csx');
 
-console.log(`The pen is ${blue}`);
+console.log(`The pen is ${csx.blue}`);
