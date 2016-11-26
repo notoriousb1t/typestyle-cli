@@ -1,6 +1,6 @@
 .alm
 .vscode
 node_modules
-tests
+test
 webpack.config.js
 tsconfig.json

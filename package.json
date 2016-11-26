@@ -1,7 +1,7 @@
 {
   "author": "Christopher Wallis <christopher.j.wallis@gmail.com> (http://notoriousb1t.com)",
   "bin": {
-    "typestyle": "./bin/typestyle.js"
+    "typestyle": "./lib/index.js"
   },
   "bugs": {
     "url": "https://github.com/notoriousb1t/typestyle-cli/issues"
@@ -46,7 +46,7 @@
     "url": "git+https://github.com/notoriousb1t/typestyle-cli.git"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha --require ts-node/register --reporter spec ./tests/**/**.ts"
+    "test": "node_modules/.bin/mocha --require ts-node/register --reporter spec ./test/tests/**/**.ts"
   },
   "version": "0.0.9"
 }
