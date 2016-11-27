@@ -4,15 +4,8 @@
     "lib": [
       "es2015"
     ],
-    "module": "es2015",
+    "module": "commonjs",
     "noEmit": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "allowUnreachableCode": false,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true
   },
   "include": [
