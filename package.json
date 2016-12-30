@@ -6,12 +6,6 @@
   "bugs": {
     "url": "https://github.com/notoriousb1t/typestyle-cli/issues"
   },
-  "bundledDependencies": [
-    "@types/node",
-    "ts-node",
-    "typescript",
-    "typestyle"
-  ],
   "dependencies": {
     "@types/node": "^6.0.55",
     "ts-node": "^2.0.0",

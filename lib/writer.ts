@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as typestyle from 'typestyle';
+import { reinit, getStyles } from 'typestyle';
 
-export function writer(options) {
+export function writer(options: { entry: string, cwd?: string }) {
   let contents = '';
 
   const entry = options.entry;
@@ -22,20 +22,19 @@ export function writer(options) {
     inputFile: inputFile,
     outputFile: outputFile,
     buildCSS(): void {
-      self.ensureBuildable();
+      if (!inputFile) {
+        throw Error('Input file has not been set');
+      }
 
       // clear typestyle
-      typestyle.reinit();
+      reinit();
 
       // include typescript files
       console.log(inputFile);
       require(inputFile);
 
-      contents = typestyle.getStyles();
+      contents = getStyles();
       console.log(contents);
-
-      // clear typestyle
-      typestyle.reinit();
     },
     /**
      * Get the contents of the CSS (mostly for testing purposes)
@@ -47,31 +46,10 @@ export function writer(options) {
      * write the css out to file synchronously
      */
     writeToFileSync(): void {
-      self.ensureWritable();
-      fs.writeFileSync(outputFile, contents)
-    },
-    /**
-     * Write the css out to a file
-     */
-    writeToFile(callback): void {
-      self.ensureWritable();
-      return fs.writeFile(outputFile, contents, callback)
-    },
-    /**
-     *  Throw an error if buildCSS cannot be called
-     */
-    ensureBuildable(): void {
-      if (!inputFile) {
-        throw Error('Input file has not been set');
-      }
-    },
-    /**
-     *  Throw an error if write cannot be called
-     */
-    ensureWritable(): void {
       if (!outputFile) {
         throw Error('Output file has not been set');
       }
+      fs.writeFileSync(outputFile, contents, { encoding: 'utf8' });
     }
   };
   return self;

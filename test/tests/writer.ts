@@ -1,4 +1,5 @@
-import { TypeStyleWriter } from '../../lib/TypeStyleWriter';
+import { watchFile } from 'fs';
+import { writer } from '../../lib/writer';
 import * as assert from 'assert';
 
 describe('TypeStyleWriter', () => {
@@ -6,33 +7,30 @@ describe('TypeStyleWriter', () => {
   describe('setup', () => {
 
     it('calculates the input file correct', () => {
-      const writer = new TypeStyleWriter();
-      writer.setup({
+      const w = writer({
         entry: './site.ts',
         cwd: './working-directory'
       });
-      assert.equal(writer.inputFile, '../working-directory/site.ts');
+      assert.equal(w.inputFile, '../working-directory/site.ts');
     });
 
     it('defaults the output to the filename with ext .css', () => {
-      const writer = new TypeStyleWriter();
-      writer.setup({
+      const w = writer({
         entry: './site.ts',
         cwd: './working-directory'
       });
-      assert.equal(writer.outputFile, 'working-directory/site.css');
+      assert.equal(w.outputFile, 'working-directory/site.css');
     });
   });
 
   describe('buildCSS', () => {
     it('style-is-correctly-compiled', () => {
-      const writer = new TypeStyleWriter();
-      writer.setup({
+      const w = writer({
         entry: 'test/cases/style-is-correctly-compiled.ts'
       });
-      writer.buildCSS();
+      w.buildCSS();
 
-      const output = writer.getContents();
+      const output = w.getContents();
       assert.equal(output, '.f1jvcvsh{color:red}');
     });
   });
