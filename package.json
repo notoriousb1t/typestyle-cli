@@ -6,22 +6,22 @@
   "bugs": {
     "url": "https://github.com/notoriousb1t/typestyle-cli/issues"
   },
-  "dependencies": {
-    "@types/node": "^6.0.51",
-    "ts-node": "^1.7.0",
-    "typescript": "^2.0.10",
-    "typestyle": "^0.9.1"
-  },
   "bundledDependencies": [
     "@types/node",
     "ts-node",
     "typescript",
     "typestyle"
   ],
+  "dependencies": {
+    "@types/node": "^6.0.55",
+    "ts-node": "^2.0.0",
+    "typescript": "^2.1.4",
+    "typestyle": "^0.22.1"
+  },
   "devDependencies": {
-    "@types/mocha": "^2.2.32",
-    "mocha": "^3.1.2",
-    "tslint": "^4.0.2"
+    "@types/mocha": "2.2.35",
+    "mocha": "^3.2.0",
+    "tslint": "^4.2.0"
   },
   "description": "Command-line tool for building TypeScript into CSS files",
   "keywords": [

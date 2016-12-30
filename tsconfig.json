@@ -5,11 +5,10 @@
       "es2015"
     ],
     "module": "commonjs",
-    "noEmit": true,
     "noEmitOnError": true
   },
   "include": [
-    "./src/**/*",
+    "./lib/**/*",
     "./tests/**/*"
   ],
   "exclude": [
