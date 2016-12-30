@@ -42,5 +42,5 @@
   "scripts": {
     "test": "node_modules/.bin/mocha --require ts-node/register --reporter spec ./test/tests/**/**.ts"
   },
-  "version": "0.1.4"
+  "version": "0.1.5"
 }
