@@ -2,12 +2,12 @@ import { writer } from './writer';
 import * as fs from 'fs';
 import * as path from 'path';
 
-var argv = process.argv.slice(2);
-var entry = argv[0];
+const argv = process.argv.slice(2);
+const entry = argv[0];
+console.log(entry)
 
 // launch real main script
-var w = writer();
-w.setup({  entry: entry });
+const w = writer({ entry: entry })
 
 console.log(`reading from ${w.inputFile}`);
 w.buildCSS();

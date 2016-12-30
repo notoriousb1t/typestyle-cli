@@ -2,32 +2,25 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as typestyle from 'typestyle';
 
-
-export function writer() {
-  let inputFile = '';
-  let outputFile = '';
+export function writer(options) {
   let contents = '';
 
+  const entry = options.entry;
+  const cwd = options.cwd || process.cwd();
+  let inputFile = path.join(cwd, entry);
+
+  const outputExt = '.css';
+  const relativePath = path.relative(__dirname, inputFile);
+  const inputParts = path.parse(inputFile);
+  let outputFile = path.join(inputParts.dir, inputParts.name + outputExt);
+
+  console.log(relativePath);
+  inputFile = relativePath;
+  outputFile = outputFile;
+
   const self = {
-    get inputFile() {
-      return inputFile;
-    },
-    get outputFile() {
-      return outputFile;
-    },
-    setup: function (options) {
-      const entry = options.entry;
-      const cwd = options.cwd || process.cwd();
-      let inputFile = path.join(cwd, entry);
-
-      const outputExt = '.css';
-      const relativePath = path.relative(__dirname, inputFile);
-      const inputParts = path.parse(inputFile);
-      let outputFile = path.join(inputParts.dir, inputParts.name + outputExt);
-
-      inputFile = relativePath;
-      outputFile = outputFile;
-    },
+    inputFile: inputFile,
+    outputFile: outputFile,
     buildCSS(): void {
       self.ensureBuildable();
 
