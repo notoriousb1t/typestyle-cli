@@ -7,15 +7,18 @@
     "url": "https://github.com/notoriousb1t/typestyle-cli/issues"
   },
   "dependencies": {
-    "@types/node": "^6.0.55",
     "ts-node": "^2.0.0",
-    "typescript": "^2.1.4",
-    "typestyle": "^0.22.1"
+    "typestyle": "^0.22.1",
+    "@types/node": "^6.0.55"
   },
   "devDependencies": {
     "@types/mocha": "2.2.35",
     "mocha": "^3.2.0",
-    "tslint": "^4.2.0"
+    "rollup": "^0.39.2",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "tslint": "^4.2.0",
+    "typescript": "^2.1.4"
   },
   "description": "Command-line tool for building TypeScript into CSS files",
   "keywords": [
@@ -40,7 +43,9 @@
     "url": "git+https://github.com/notoriousb1t/typestyle-cli.git"
   },
   "scripts": {
+    "build": "rollup -c rollup.common.js",
     "test": "node_modules/.bin/mocha --require ts-node/register --reporter spec ./test/tests/**/**.ts"
   },
+  "typings": "./lib/index",
   "version": "0.1.5"
 }

@@ -3,7 +3,7 @@ import * as path from 'path';
 import { reinit, getStyles } from 'typestyle';
 
 export function writer(options: { entry: string, cwd?: string }) {
-  let contents = '';
+  let contentString = '';
 
   const entry = options.entry;
   const cwd = options.cwd || process.cwd();
@@ -30,17 +30,22 @@ export function writer(options: { entry: string, cwd?: string }) {
       reinit();
 
       // include typescript files
-      console.log(inputFile);
-      require(inputFile);
+      try {
+        require(inputFile);
+      }
+      catch (err) {
+        console.error(err);
+        return;
+      }
 
-      contents = getStyles();
-      console.log(contents);
+      contentString = getStyles();
+      console.log(getStyles());
     },
     /**
      * Get the contents of the CSS (mostly for testing purposes)
      */
     getContents(): string {
-      return contents;
+      return contentString;
     },
     /**
      * write the css out to file synchronously
@@ -49,7 +54,7 @@ export function writer(options: { entry: string, cwd?: string }) {
       if (!outputFile) {
         throw Error('Output file has not been set');
       }
-      fs.writeFileSync(outputFile, contents, { encoding: 'utf8' });
+      fs.writeFileSync(outputFile, contentString, { encoding: 'utf8' });
     }
   };
   return self;

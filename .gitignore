@@ -1,7 +1,4 @@
 .alm
 .vscode
 node_modules
-src/**/*.js
-src/**/*.map
-test/**/*.js
 npm-debug.log

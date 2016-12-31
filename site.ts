@@ -1,5 +1,5 @@
 import { style } from 'typestyle';
 
-  export const redClass = style({
-    color: '#F00'
-  });
+style({
+  color: '#F00'
+});
