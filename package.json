@@ -1,7 +1,7 @@
 {
   "author": "Christopher Wallis <christopher.j.wallis@gmail.com> (http://notoriousb1t.com)",
   "bin": {
-    "typestyle": "./lib/index.js"
+    "typestyle": "./lib/launcher.js"
   },
   "bugs": {
     "url": "https://github.com/notoriousb1t/typestyle-cli/issues"

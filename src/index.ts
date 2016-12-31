@@ -20,14 +20,21 @@ tsNode.register({
   }
 });
 
-const entry = process.argv[2];
-console.log(entry);
+function createWriter() {
+  const entry = process.argv[2];
+  if (!entry){
+    console.error('ERROR: an entry file was not specified');
+    process.exit();
+  }
 
-// launch real main script
-const w = writer({ entry: entry })
+  // launch real main script
+  return writer({ entry: entry })
+}
+
+const w = createWriter();
 
 console.log(`reading from ${w.inputFile}`);
-w.buildCSS();
+const contents = w.buildCSS();
 
 console.log(`writing to ${w.outputFile}`);
 w.writeToFileSync();

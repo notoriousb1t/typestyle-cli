@@ -12,17 +12,13 @@ export function writer(options: { entry: string, cwd?: string }) {
   const outputExt = '.css';
   const relativePath = path.relative(__dirname, inputFile);
   const inputParts = path.parse(inputFile);
-  let outputFile = path.join(inputParts.dir, inputParts.name + outputExt);
-
-  console.log(relativePath);
-  inputFile = relativePath;
-  outputFile = outputFile;
+  const outputFile = path.join(inputParts.dir, inputParts.name + outputExt);
 
   const self = {
-    inputFile: inputFile,
+    inputFile: relativePath,
     outputFile: outputFile,
     buildCSS(): void {
-      if (!inputFile) {
+      if (!relativePath) {
         throw Error('Input file has not been set');
       }
 
@@ -30,16 +26,10 @@ export function writer(options: { entry: string, cwd?: string }) {
       reinit();
 
       // include typescript files
-      try {
-        require(inputFile);
-      }
-      catch (err) {
-        console.error(err);
-        return;
-      }
+      require(inputFile);
 
+      // get output
       contentString = getStyles();
-      console.log(getStyles());
     },
     /**
      * Get the contents of the CSS (mostly for testing purposes)

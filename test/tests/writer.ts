@@ -1,5 +1,5 @@
 import { watchFile } from 'fs';
-import { writer } from '../../lib/writer';
+import { writer } from '../../src/writer';
 import * as assert from 'assert';
 
 describe('TypeStyleWriter', () => {
