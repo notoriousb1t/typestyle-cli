@@ -1,40 +1,56 @@
-//#!/usr/bin/env node
 import * as child_process from 'child_process';
 import * as fs from 'fs';
-import * as path from 'path';
-import { writer } from './writer';
-var tsNode = require('ts-node');
+import { out, err } from './logger';
+import { parseOptions } from './options';
+import { reinit, getStyles } from 'typestyle';
 
-console.log("starting...");
-const argv = process.argv.slice(2);
-const mainTs = path.join(__dirname, 'main.js');
+const chalk = require('chalk');
+const tsNode = require('ts-node');
 
-const compilerOptions = {
-  "module": "commonjs"
-};
-
+out("registering typescript environment");
 tsNode.register({
   ignore: true,
   compilerOptions: {
-      module: 'commonjs',
+    module: 'commonjs',
   }
 });
 
-function createWriter() {
-  const entry = process.argv[2];
-  if (!entry){
-    console.error('ERROR: an entry file was not specified');
-    process.exit();
-  }
-
-  // launch real main script
-  return writer({ entry: entry })
+out("reading commendline options");
+const options = parseOptions();
+if (!options.inputFiles.length) {
+  console.error('ERROR: an entry file was not specified');
+  process.exit();
 }
 
-const w = createWriter();
+// validate options from the commandline
+if (!options.inputFiles.length) {
+  err('Input file has not been set');
+  process.exit(1);
+}
+if (!options.outputFiles.length) {
+  err('Output file has not been set');
+  process.exit(1);
+}
 
-console.log(`reading from ${w.inputFile}`);
-const contents = w.buildCSS();
+// rebuild and write out all targets
+for (let i = 0, len = options.inputFiles.length; i < len; i++) {
+  const inputFile = options.inputFiles[i];
+  const outputFile = options.outputFiles[i];
+  const relativePath = options.relativePaths[i];
 
-console.log(`writing to ${w.outputFile}`);
-w.writeToFileSync();
+  out('reading from ', chalk.green(inputFile));
+  // clear typestyle
+  reinit();
+
+  // include typescript files
+  require(relativePath);
+
+  // get output
+  const contentString = getStyles();
+
+  out('writing to ', chalk.green(outputFile));
+  fs.writeFileSync(outputFile, contentString, { encoding: 'utf8' });
+}
+
+out('done!');
+process.exit(0);

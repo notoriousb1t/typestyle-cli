@@ -3,15 +3,26 @@
 TypeStyle CLI compiles your TypeStyle files into CSS files.
 
 ## Setup
-
 ```bash
-npm i typestyle-cli -g
+npm i typestyle-cli --save-dev
 ```
 
 ## Usage
-```bash
-typestyle main.ts
+** In your package.json **
+```json
+{
+    "scripts": {
+        "css": "typestyle src/styles/site.ts"
+    }
+}
 ```
+
+** Run this from the command line **
+```bash
+npm run css
+```
+
+That will output site.css
 
 ## Reasons
 
